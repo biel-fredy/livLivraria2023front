@@ -31,6 +31,7 @@ function Header() {
     'Notificação 2',
     'Notificação 3',
     'erick lindo',
+    'qualquer string',
   ]; // Exemplo de notificações
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {

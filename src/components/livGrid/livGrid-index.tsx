@@ -47,7 +47,10 @@ const LivGrid: React.FC<LivGridProps> = ({ data }) => {
   const filteredData = data.filter((row) => {
     return Object.keys(filters).every((column) => {
       return filters[column]
-        ? row[column].toString().includes(filters[column])
+        ? row[column]
+            .toString()
+            .toLowerCase()
+            .includes(filters[column].toLowerCase())
         : true;
     });
   });
