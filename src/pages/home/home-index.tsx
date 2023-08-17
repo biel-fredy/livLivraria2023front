@@ -27,15 +27,16 @@ const Home: React.FC = () => {
             tooltip="Nome completo"
             value={formData.nome}
             onChange={handleChange}
+            size={'pequeno'}
           />
           <LivInputText
             name="preco"
             label="Preço"
             placeholder="Digite o preço"
             tooltip="Preço em dólares"
-            mask={maskCurrency}
             value={formData.preco}
             onChange={handleChange}
+            size={'pequeno'}
           />
         </form>
       </Quadro>
