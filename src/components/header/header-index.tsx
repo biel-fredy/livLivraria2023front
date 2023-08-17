@@ -10,10 +10,21 @@ import {
   NavLinksContainer,
   StyledAppBar,
   StyledButton,
+  StyledMenu,
   linkStyle,
 } from './header-styles';
 
 function Header() {
+  const [cadastroMenuAnchor, setCadastroMenuAnchor] =
+    useState<null | HTMLElement>(null);
+
+  const handleCadastroMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setCadastroMenuAnchor(event.currentTarget);
+  };
+
+  const handleCadastroMenuClose = () => {
+    setCadastroMenuAnchor(null);
+  };
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const notifications = [
     'Notificação 1',
@@ -36,6 +47,38 @@ function Header() {
           Liv Livraria
         </Typography>
         <NavLinksContainer>
+          <div>
+            <StyledButton onClick={handleCadastroMenuOpen}>
+              Cadastro
+            </StyledButton>
+            <StyledMenu
+              anchorEl={cadastroMenuAnchor}
+              open={Boolean(cadastroMenuAnchor)}
+              onClose={handleCadastroMenuClose}
+            >
+              <MenuItem onClick={handleCadastroMenuClose}>
+                <Link to="/cadastro/informacoes-gerais" style={linkStyle}>
+                  Cadastro de Informações Gerais
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCadastroMenuClose}>
+                <Link to="/cadastro/enderecos" style={linkStyle}>
+                  Cadastro de Endereços
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCadastroMenuClose}>
+                <Link to="/cadastro/telefones" style={linkStyle}>
+                  Cadastro de Telefones
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCadastroMenuClose}>
+                <Link to="/cadastro/cartoes" style={linkStyle}>
+                  Cadastro de Cartões
+                </Link>
+              </MenuItem>
+            </StyledMenu>
+          </div>
+
           <Link to="/" style={linkStyle}>
             <StyledButton>Home</StyledButton>
           </Link>
