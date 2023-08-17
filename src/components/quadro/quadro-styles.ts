@@ -7,6 +7,7 @@ export const StyledPaper = styled(Paper)`
   border-radius: 8px; // Pontas arredondadas
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
   padding: 16px; // Espaçamento interno
+  margin: 15px;
 `;
 
 export const Title = styled('h2')`
