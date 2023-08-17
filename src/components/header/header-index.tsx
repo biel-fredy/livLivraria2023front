@@ -6,7 +6,12 @@ import MenuItem from '@mui/material/MenuItem';
 import React, { useState } from 'react';
 import { Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { StyledAppBar, StyledButton, linkStyle } from './header-styles';
+import {
+  NavLinksContainer,
+  StyledAppBar,
+  StyledButton,
+  linkStyle,
+} from './header-styles';
 
 function Header() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -30,15 +35,17 @@ function Header() {
         <Typography variant="h6" style={{ flexGrow: 1 }}>
           Liv Livraria
         </Typography>
-        <Link to="/" style={linkStyle}>
-          <StyledButton>Home</StyledButton>
-        </Link>
-        <Link to="/cliente" style={linkStyle}>
-          <StyledButton>Cliente</StyledButton>
-        </Link>
-        <Link to="/admin" style={linkStyle}>
-          <StyledButton>Admin</StyledButton>
-        </Link>
+        <NavLinksContainer>
+          <Link to="/" style={linkStyle}>
+            <StyledButton>Home</StyledButton>
+          </Link>
+          <Link to="/cliente" style={linkStyle}>
+            <StyledButton>Cliente</StyledButton>
+          </Link>
+          <Link to="/admin" style={linkStyle}>
+            <StyledButton>Admin</StyledButton>
+          </Link>
+        </NavLinksContainer>
         <IconButton color="inherit" onClick={handleMenuOpen}>
           <Badge badgeContent={notifications.length} color="error">
             <NotificationsIcon />

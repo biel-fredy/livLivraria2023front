@@ -17,3 +17,9 @@ export const linkStyle = {
   color: 'white',
   textDecoration: 'none',
 };
+
+export const NavLinksContainer = styled('div')`
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+`;
