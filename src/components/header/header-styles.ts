@@ -3,6 +3,10 @@ import { Button as MUIButton, AppBar as MUIAppBar, Menu } from '@mui/material';
 
 export const StyledAppBar = styled(MUIAppBar)`
   background-color: #0B521B;
+  height: 64px; // Fixando a altura em 64px
+  position: fixed; // Posicionando fixo no topo
+  width: 100%;
+  z-index: 1000; // Para garantir que fique acima dos outros elementos
 `;
 
 export const StyledButton = styled(MUIButton)`

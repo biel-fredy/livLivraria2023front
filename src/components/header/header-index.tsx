@@ -58,22 +58,25 @@ function Header() {
               onClose={handleCadastroMenuClose}
             >
               <MenuItem onClick={handleCadastroMenuClose}>
-                <Link to="/cadastro/informacoes-gerais" style={linkStyle}>
+                <Link
+                  to="/cadastro-cliente/informacoes-gerais"
+                  style={linkStyle}
+                >
                   Cadastro de Informações Gerais
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCadastroMenuClose}>
-                <Link to="/cadastro/enderecos" style={linkStyle}>
+                <Link to="/cadastro-cliente/enderecos" style={linkStyle}>
                   Cadastro de Endereços
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCadastroMenuClose}>
-                <Link to="/cadastro/telefones" style={linkStyle}>
+                <Link to="/cadastro-cliente/telefones" style={linkStyle}>
                   Cadastro de Telefones
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCadastroMenuClose}>
-                <Link to="/cadastro/cartoes" style={linkStyle}>
+                <Link to="/cadastro-cliente/cartoes" style={linkStyle}>
                   Cadastro de Cartões
                 </Link>
               </MenuItem>

@@ -4,6 +4,8 @@ import { HomeContainer } from './home-styles';
 import Quadro from '../../components/quadro/quadro-index';
 import LivInputText from '../../components/livInputText/livInputText-index';
 import LivGrid from '../../components/livGrid/livGrid-index';
+import RelogioCarregando from '../../components/relogioCarregando/relogioCarregando-index';
+import BotaoEnviar from '../../components/botaoEnviar/botaoEnviar-index';
 
 const Home: React.FC = () => {
   const [formData, setFormData] = useState({ nome: '', preco: '', email: '' });
@@ -16,7 +18,23 @@ const Home: React.FC = () => {
     { id: 1, nome: 'Alice', idade: 25 },
     { id: 2, nome: 'Bob', idade: 30 },
     { id: 3, nome: 'Carol', idade: 28 },
+    { id: 4, nome: 'Barney', idade: 28 },
+    { id: 3, nome: 'Biruleibe', idade: 28 },
   ];
+
+  const dadosFormulario = {
+    nome: 'nome',
+    email: 'email',
+  };
+
+  const onSuccess = () => {
+    alert('Formulário enviado com sucesso!');
+  };
+
+  const onFailure = () => {
+    alert('Falha ao enviar o formulário. Tente novamente.');
+  };
+
   return (
     <HomeContainer>
       <Quadro titulo="Bem-vindo à Página Inicial">
@@ -57,6 +75,20 @@ const Home: React.FC = () => {
       </Quadro>
 
       <LivGrid data={data} />
+
+      <Quadro titulo="Relogio de loading">
+        <RelogioCarregando carregando={true} />
+      </Quadro>
+
+      <Quadro titulo="Botao Enviar">
+        <BotaoEnviar
+          texto="Enviar"
+          url="https://api.example.com/enviar"
+          dadosFormulario={dadosFormulario}
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+        />
+      </Quadro>
     </HomeContainer>
   );
 };

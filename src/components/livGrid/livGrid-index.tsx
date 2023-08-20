@@ -1,5 +1,5 @@
 // livGrid-index.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Table,
   TableContainer,
@@ -15,18 +15,30 @@ import {
 import { GridContainerStyle, BoldTableCellStyle } from './livGrid-styles';
 import Quadro from '../quadro/quadro-index';
 import { Close, FilterList } from '@mui/icons-material';
+import LivPaginacao from '../livPaginacao/livPaginacao-index';
 
 interface LivGridProps {
-  data: any[];
+  data: Record<string, any>[];
 }
 
 const LivGrid: React.FC<LivGridProps> = ({ data }) => {
   const columns = Object.keys(data[0] || {});
-  const [filters, setFilters] = useState<{ [key: string]: string }>({});
+  const [filters, setFilters] = useState<Record<string, string>>({});
   const [editingColumn, setEditingColumn] = useState<string | null>(null);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(10);
+  const [page, setPage] = useState<number>(1);
+
+  useEffect(() => {
+    setPage(1);
+    setItemsPerPage(10);
+  }, [filters]);
 
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const handleItemsPerPageChange = (newItemsPerPage: number) => {
+    setItemsPerPage(newItemsPerPage);
   };
 
   const handleFilterChange = (column: string, value: string) => {
@@ -54,6 +66,15 @@ const LivGrid: React.FC<LivGridProps> = ({ data }) => {
         : true;
     });
   });
+
+  const paginatedData = filteredData.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage,
+  );
+
+  const handleChangePage = (newPage: number) => {
+    setPage(newPage);
+  };
 
   return (
     <Quadro titulo="Grid">
@@ -90,7 +111,7 @@ const LivGrid: React.FC<LivGridProps> = ({ data }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredData.map((row, index) => (
+              {paginatedData.map((row, index) => (
                 <TableRow key={index}>
                   {columns.map((column) => (
                     <TableCell key={column}>{row[column]}</TableCell>
@@ -100,6 +121,12 @@ const LivGrid: React.FC<LivGridProps> = ({ data }) => {
             </TableBody>
           </Table>
         </TableContainer>
+        <LivPaginacao
+          count={filteredData.length}
+          itemsPerPage={itemsPerPage}
+          onChangePage={handleChangePage}
+          onItemsPerPageChange={handleItemsPerPageChange} // Passando a função de callback
+        />
       </div>
     </Quadro>
   );
