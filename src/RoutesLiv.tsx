@@ -4,6 +4,7 @@ import Home from './pages/home/home-index';
 import LivNavBarLateral from './components/livNavBarLateral/livNavBarLateral-index';
 import { RoutesContainer, ContentContainer } from './RoutesLiv-styles';
 import InformacoesGerais from './pages/cadastroCliente/informacoesGerais/informacoesGerais-index';
+import Cartoes from './pages/cadastroCliente/cartoes/cartoes-index';
 
 function RoutesLiv() {
   const links = [
@@ -26,6 +27,7 @@ function RoutesLiv() {
               path="/cadastro-cliente/informacoes-gerais"
               element={<InformacoesGerais />}
             />
+            <Route path="/cadastro-cliente/cartoes" element={<Cartoes />} />
           </Routes>
         </ContentContainer>
       </RoutesContainer>
