@@ -12,8 +12,8 @@ const LivNavBarLateral: React.FC<LivNavBarLateralProps> = ({
 }) => {
   return (
     <NavBarContainer>
-      {links.map((link) => (
-        <NavItem href={link.path} selected={link.path === selected}>
+      {links.map((link, index) => (
+        <NavItem key={index} href={link.path} selected={link.path === selected}>
           {link.name}
         </NavItem>
       ))}

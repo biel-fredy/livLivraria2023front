@@ -1,18 +1,26 @@
 import styled from 'styled-components';
 
-interface FormProps {
-  colunas: number;
-}
-
-export const FormContainer = styled.form<FormProps>`
+export const FormContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 
-  // Estilização para diferentes números de colunas
   & > div {
-    width: ${({ colunas }) => 100 / colunas - 2}%;
+    width: var(--colunas);
     margin: 1%;
+  }
+
+  // Configuração responsiva
+  @media (max-width: 768px) {
+    & > div {
+      width: 100%; // 1 coluna em telas pequenas
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    & > div {
+      width: 48%; // 2 colunas em telas médias
+    }
   }
 `;
 

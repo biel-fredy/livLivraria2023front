@@ -6,6 +6,8 @@ import LivInputText from '../../components/livInputText/livInputText-index';
 import LivGrid from '../../components/livGrid/livGrid-index';
 import RelogioCarregando from '../../components/relogioCarregando/relogioCarregando-index';
 import BotaoEnviar from '../../components/botaoEnviar/botaoEnviar-index';
+import LivroCard from '../../components/livroCard/livroCard-index';
+import imagemLivro from '../../assets/guiaCapa.jpg';
 
 const Home: React.FC = () => {
   const [formData, setFormData] = useState({ nome: '', preco: '', email: '' });
